@@ -1,8 +1,8 @@
 import React from "react";
 import { PROJECTS } from "../data/projects";
-import Button from "./ui/Button";
-import Badge from "./ui/Badge";
-import Card from "./ui/Card";
+import Button from "./ui";
+import Badge from "./ui";
+import Card from "./ui";
 import { ExternalLink } from "lucide-react";
 
 /**

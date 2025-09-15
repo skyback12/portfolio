@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "./ui/Button";
-import Badge from "./ui/Badge";
+import Button from "./ui";
+import { Badge } from "./ui";
 import { Github, Linkedin, File } from "lucide-react";
 
 export default function Hero() {
