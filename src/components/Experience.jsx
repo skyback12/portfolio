@@ -1,6 +1,5 @@
 import AnimatedCard from "./ui/animatedCard";
 import AnimatedSection from "./ui/AnimatedSection";
-import Card from "./ui/card";
 
 
 const EXPERIENCE = [

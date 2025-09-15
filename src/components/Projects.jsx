@@ -1,7 +1,7 @@
 // src/components/Projects.jsx
 import React from "react";
-import { Button } from "./ui/Button";  
-import { Badge } from "./ui/Badge";
+import { Button } from "./ui/Button.jsx";
+import { Badge } from "./ui/Badge.jsx";
 import { ExternalLink } from "lucide-react";
 import AnimatedCard from "./ui/animatedCard";
 import AnimatedSection from "./ui/AnimatedSection";
