@@ -8,12 +8,14 @@ import Card from "./ui/card";
 
 const PROJECTS = [
   {
-    title: "AI Dress Studio (Ongoing)",
-    desc: "AI platform for pattern generation, outfit visualization, and measurement AI.",
-    tech: ["Flask", "React", "Supabase", "Stable Diffusion", "OpenCV"],
-    link: "#", // <- updated to your deployed site
-    live: true
-  },
+  title: "AI Dress Studio (Ongoing)",
+  desc: "AI platform for pattern generation, outfit visualization, and measurement AI.",
+  tech: ["Flask", "React", "Supabase", "Stable Diffusion", "OpenCV"],
+  link: "https://ai-dress-studio.onrender.com", // Overview/demo link only
+  note: "⚠️ This link is just an overview site showing usage flow. The production version is API-connected to external providers, so this page is only a static showcase.",
+  live: true
+}
+,
   {
     title: "Gesture Controlled Presentation System",
     desc: "Hands-free slide navigation using computer vision + ML.",
