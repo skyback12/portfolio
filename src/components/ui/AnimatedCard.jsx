@@ -1,13 +1,13 @@
+// src/components/ui/AnimatedCard.jsx
+import React from "react";
 import { motion } from "framer-motion";
 
-export default function AnimatedCard({ children, delay = 0, className = "" }) {
+export default function AnimatedCard({ children, className = "" }) {
   return (
     <motion.div
-      className={`rounded-2xl shadow-sm border bg-background p-6 ${className}`}
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut", delay }}
-      viewport={{ once: true, amount: 0.2 }}
+      className={`bg-white rounded-lg shadow-sm p-4 hover:shadow-lg transition-shadow ${className}`}
+      whileHover={{ y: -6 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
       {children}
     </motion.div>

@@ -1,8 +1,11 @@
-import Card from "./ui/card";
+// src/components/About.jsx
+import React from "react";
+import Card from "./ui/Card.jsx";
+import AnimatedSection from "./ui/AnimatedSection.jsx";
 
 export default function About() {
   return (
-    <section id="about" className="mt-12">
+    <AnimatedSection id="about" className="mt-12">
       <div className="grid md:grid-cols-3 gap-6 items-start">
         <div className="md:col-span-2">
           <Card>
@@ -31,6 +34,6 @@ export default function About() {
           </Card>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }
