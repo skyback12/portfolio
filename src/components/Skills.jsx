@@ -1,6 +1,6 @@
 // src/components/Skills.jsx
 import React from "react";
-import Card from "./ui/Card.jsx";
+import Card from "./ui/card.jsx";
 import AnimatedSection from "./ui/AnimatedSection.jsx";
 
 const GROUPS = [
