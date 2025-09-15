@@ -1,11 +1,15 @@
-import React from "react";
+import { motion } from "framer-motion";
 
-export default function AnimatedCard({ children, className = "" }) {
+export default function AnimatedCard({ children, delay = 0, className = "" }) {
   return (
-    <div
-      className={`bg-white rounded-2xl p-6 shadow-md transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${className}`}
+    <motion.div
+      className={`rounded-2xl shadow-sm border bg-background p-6 ${className}`}
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut", delay }}
+      viewport={{ once: true, amount: 0.2 }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

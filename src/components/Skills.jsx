@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./ui/card";
+import AnimatedSection from "./ui/AnimatedSection";
 
 const GROUPS = [
   {
@@ -64,25 +64,20 @@ const GROUPS = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="mt-12">
+    <AnimatedSection id="skills" className="mt-12">
       <h3 className="text-xl font-semibold">Skills</h3>
-      <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {GROUPS.map((g) => (
           <Card key={g.title}>
             <h4 className="text-sm font-medium text-slate-600">{g.title}</h4>
             <div className="mt-3 flex flex-wrap gap-2">
               {g.skills.map((s) => (
-                <span
-                  key={s}
-                  className="text-xs px-2 py-1 bg-slate-100 rounded"
-                >
-                  {s}
-                </span>
+                <span key={s} className="text-xs px-2 py-1 bg-slate-100 rounded">{s}</span>
               ))}
             </div>
           </Card>
         ))}
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

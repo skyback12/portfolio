@@ -1,11 +1,15 @@
-import React from "react";
+import { motion } from "framer-motion";
 
-export default function AnimatedSection({ children, id }) {
+export default function AnimatedSection({ children, className = "" }) {
   return (
-    <section id={id} className="py-10">
-      <div className="container mx-auto px-4">
-        <div className="space-y-6">{children}</div>
-      </div>
-    </section>
+    <motion.div
+      className={`w-full ${className}`}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      {children}
+    </motion.div>
   );
 }

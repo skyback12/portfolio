@@ -1,9 +1,10 @@
 // src/components/Projects.jsx
 import React from "react";
-import Button from "./ui/button";
-import Badge from "./ui/badge";
+import { Button } from "./ui/Button";  
+import { Badge } from "./ui/Badge";
 import { ExternalLink } from "lucide-react";
-import Card from "./ui/card";
+import AnimatedCard from "./ui/animatedCard";
+import AnimatedSection from "./ui/AnimatedSection";
 
 
 const PROJECTS = [
@@ -31,13 +32,13 @@ const PROJECTS = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="mt-12">
+    <AnimatedSection id="projects" className="mt-12">
       <h3 className="text-xl font-semibold">Projects</h3>
       <p className="text-sm text-slate-600 mt-2">Selected work — active & maintained projects highlighted.</p>
 
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
         {PROJECTS.map((p) => (
-          <Card key={p.title}>
+          <AnimatedCard key={p.title}>
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1">
                 <div className="flex items-center gap-3">
@@ -70,9 +71,9 @@ export default function Projects() {
                 <div className="mt-3 text-xs text-slate-400">{p.live ? "Deployed site" : ""}</div>
               </div>
             </div>
-          </Card>
+          </AnimatedCard>
         ))}
       </div>
-    </section>
+    </AnimatedSection>
   );
 }
