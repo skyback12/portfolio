@@ -11,7 +11,7 @@ import "../styles/globals.css"
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <div>
       <main className="container mx-auto px-6 py-12">
         <Hero />
         <About />
