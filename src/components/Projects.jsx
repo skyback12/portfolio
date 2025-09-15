@@ -7,33 +7,35 @@ import Card from "./ui/card";
 
 const PROJECTS = [
   {
-    title: "AI Dress Studio (Ongoing)",
-    desc: "AI platform for pattern generation, outfit visualization, and measurement AI.",
-    tech: ["Flask", "React", "Supabase", "Stable Diffusion", "OpenCV", "openai"],
-    link: "https://ai-dress-studio.onrender.com", // Overview/demo link only
-    note: "⚠️ This is a link to tell what we are building in this project. When this project is finished, then I will share the original link. ",
-    live: true,
-  },
+  title: "AI Dress Studio (Ongoing)",
+  desc: "Flagship fashion-tech AI platform that integrates pattern generation, outfit visualization, and AI-based body measurement. Built with a Flask backend, React frontend, Supabase storage, Stable Diffusion for fabric patterns, OpenCV for measurement AI, and OpenAI for generative intelligence.",
+  tech: ["Flask", "React", "Supabase", "Stable Diffusion", "OpenCV", "OpenAI"],
+  link: "https://ai-dress-studio.onrender.com",
+  note: "⚠️ Preview link — project under development. Final product link will be shared once completed.",
+  live: true,
+},
+
   {
     title: "Gesture Controlled Presentation System",
-    desc: "Hands-free slide navigation using computer vision + ML.",
+    desc: "Hands-free presentation controller enabling users to switch slides using real-time hand gestures. Enhanced accessibility and engagement with computer vision + ML integration.",
     tech: ["Python", "OpenCV", "TensorFlow", "Flask", "React"],
     link: "https://github.com/skyback12/Gesture-Controlled-Presentation-System",
   },
   {
     title: "Crop Yield Prediction",
-    desc: "Forecasting agricultural production using weather & soil data.",
-    tech: ["TensorFlow", "Scikit-learn", "Pandas"],
+    desc: "AI model forecasting agricultural production based on weather and soil health data. Integrated real-time climate data for more accurate predictions.",
+    tech: ["TensorFlow", "Scikit-learn", "Pandas", "NumPy"],
     link: "https://drive.google.com/drive/folders/1zRJxr8kXpX0TpQsBS8esQz93BmNLz4Ol?usp=drive_link",
   },
+  
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="mt-12">
+    <section id="projects" className="mt-16">
       <h3 className="text-xl font-semibold">Projects</h3>
       <p className="text-sm text-slate-600 mt-2">
-        Selected work — active & maintained projects highlighted.
+        Selected work — flagship, academic, and freelance projects that highlight AI, ML, and full stack development.
       </p>
 
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -52,7 +54,6 @@ export default function Projects() {
 
                 <p className="mt-2 text-sm text-slate-600">{p.desc}</p>
 
-                {/* render note if available */}
                 {p.note && (
                   <p className="mt-2 text-xs text-amber-600 italic">{p.note}</p>
                 )}
@@ -74,7 +75,6 @@ export default function Projects() {
                   {p.link && p.link !== "#" ? "Open" : "View"}
                 </Button>
 
-                {/* optional small meta or status */}
                 <div className="mt-3 text-xs text-slate-400">
                   {p.live ? "Deployed site" : ""}
                 </div>
