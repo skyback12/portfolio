@@ -1,14 +1,14 @@
 // src/components/About.jsx
 import React from "react";
-import Card from "./ui/Card.jsx";
 import AnimatedSection from "./ui/AnimatedSection.jsx";
+import AnimatedCard from "./ui/AnimatedCard.jsx";
 
 export default function About() {
   return (
     <AnimatedSection id="about" className="mt-12">
       <div className="grid md:grid-cols-3 gap-6 items-start">
         <div className="md:col-span-2">
-          <Card>
+          <AnimatedCard>
             <h3 className="text-xl font-semibold">About</h3>
             <p className="mt-3 text-slate-700">
               I am a B.Tech AI & ML graduate (GGSIPU, 2025) currently interning as a Full Stack Python Developer & AI/ML Intern.
@@ -20,18 +20,18 @@ export default function About() {
               <li>• Built Gesture Controlled Presentation System (computer vision + ML).</li>
               <li>• Worked on Credit Card Fraud Detection and Crop Yield Prediction projects.</li>
             </ul>
-          </Card>
+          </AnimatedCard>
         </div>
 
         <div>
-          <Card>
+          <AnimatedCard>
             <h4 className="text-sm font-medium text-slate-600">Contact</h4>
             <p className="mt-2 text-sm">adityamalik081203@gmail.com</p>
             <p className="mt-1 text-sm">+91 8527036487</p>
             <div className="mt-4">
               <a href="https://www.fiverr.com/s/lj29pDa" target="_blank" rel="noreferrer" className="text-sm text-sky-600 hover:underline">Fiverr profile</a>
             </div>
-          </Card>
+          </AnimatedCard>
         </div>
       </div>
     </AnimatedSection>
