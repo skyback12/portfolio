@@ -1,7 +1,7 @@
 // src/components/About.jsx
 import React from "react";
-import AnimatedSection from "./ui/AnimatedSection.jsx";
 import AnimatedCard from "./ui/animatedCard.jsx";
+import AnimatedSection from "./ui/AnimatedSection.jsx";
 
 export default function About() {
   return (
