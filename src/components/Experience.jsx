@@ -6,8 +6,8 @@ import AnimatedSection from "./ui/AnimatedSection.jsx";
 const EXPERIENCE = [
   {
     title: "Full Stack Python Developer & AI/ML Intern",
-    org: "CSRBOX (Internship)",
-    date: "Jul 2025 – Present",
+    org: "Company name: InStyle Retail Inc ",
+    date: "22 Aug 2025 – Present",
     desc: "Working on real-world projects solving company workflow challenges. Built automated reporting pipelines (initial prototypes), and currently developing AI Dress Studio — an AI-powered fashion-tech platform. Tech: Python, Flask, FastAPI, React, Supabase, OpenCV, TensorFlow."
   },
   {
