@@ -4,7 +4,7 @@ i
 import Button from "./ui/button";
 import Badge from "./ui/badge";
 import { ExternalLink } from "lucide-react";
-import AnimatedCard from "./ui/animatedCard";
+import Card from "./ui/card";
 
 
 const PROJECTS = [
@@ -38,7 +38,7 @@ export default function Projects() {
 
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
         {PROJECTS.map((p) => (
-          <AnimatedCard key={p.title}>
+          <Card key={p.title}>
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1">
                 <div className="flex items-center gap-3">
@@ -71,7 +71,7 @@ export default function Projects() {
                 <div className="mt-3 text-xs text-slate-400">{p.live ? "Deployed site" : ""}</div>
               </div>
             </div>
-          </AnimatedCard>
+          </Card>
         ))}
       </div>
     </section>
