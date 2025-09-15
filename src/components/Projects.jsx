@@ -11,7 +11,7 @@ const PROJECTS = [
     title: "AI Dress Studio (Ongoing)",
     desc: "AI platform for pattern generation, outfit visualization, and measurement AI.",
     tech: ["Flask", "React", "Supabase", "Stable Diffusion", "OpenCV"],
-    link: "https://ai-dress-studio-web.onrender.com", // <- updated to your deployed site
+    link: "#", // <- updated to your deployed site
     live: true
   },
   {
