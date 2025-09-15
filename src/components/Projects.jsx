@@ -1,6 +1,5 @@
 // src/components/Projects.jsx
 import React from "react";
-i
 import Button from "./ui/button";
 import Badge from "./ui/badge";
 import { ExternalLink } from "lucide-react";
