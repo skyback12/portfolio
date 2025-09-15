@@ -1,7 +1,7 @@
 // src/components/Hero.jsx
 import React from "react";
-import Button from "./ui/Button.jsx";
-import Badge from "./ui/Badge.jsx";
+import { Button } from "./ui/Button.jsx";
+import { Badge } from "./ui/Badge.jsx";
 import AnimatedSection from "./ui/AnimatedSection.jsx";
 import { Github, Linkedin, File } from "lucide-react";
 
