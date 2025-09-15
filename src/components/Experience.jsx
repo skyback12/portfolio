@@ -1,5 +1,5 @@
-import AnimatedCard from "./ui/animatedCard";
-import AnimatedSection from "./ui/AnimatedSection";
+import AnimatedCard from "./ui/animatedCard.jsx";
+import AnimatedSection from "./ui/AnimatedSection.jsx";
 
 
 const EXPERIENCE = [

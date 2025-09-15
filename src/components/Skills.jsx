@@ -1,5 +1,5 @@
 import React from "react";
-import AnimatedSection from "./ui/AnimatedSection";
+import AnimatedSection from "./ui/AnimatedSection.jsx";
 
 const GROUPS = [
   {
