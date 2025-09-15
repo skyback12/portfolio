@@ -1,9 +1,10 @@
 // src/components/Projects.jsx
 import React from "react";
-import AnimatedCard from "../components/ui/animatedCard";
-import Badge from "../components/ui/badge";
-import Button from "../components/ui/button";
+import AnimatedCard from "./ui/animatedCard";
+import Button from "./ui/button";
+import Badge from "./ui/badge";
 import { ExternalLink } from "lucide-react";
+
 
 const PROJECTS = [
   {
