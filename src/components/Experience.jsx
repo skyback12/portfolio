@@ -1,5 +1,4 @@
-import AnimatedCard from "./ui/animatedCard.jsx";
-import AnimatedSection from "./ui/AnimatedSection.jsx";
+import Card from "./ui/card";
 
 
 const EXPERIENCE = [
@@ -25,11 +24,11 @@ const EXPERIENCE = [
 
 export default function Experience() {
   return (
-    <AnimatedSection id="experience" className="mt-12">
+    <section id="experience" className="mt-12">
       <h3 className="text-xl font-semibold">Experience</h3>
       <div className="mt-4 space-y-4">
         {EXPERIENCE.map((e) => (
-          <AnimatedCard key={e.title}>
+          <Card key={e.title}>
             <div className="flex items-start justify-between">
               <div>
                 <h4 className="font-semibold">{e.title}</h4>
@@ -37,9 +36,9 @@ export default function Experience() {
               </div>
             </div>
             <p className="mt-3 text-sm text-slate-700">{e.desc}</p>
-          </AnimatedCard>
+          </Card>
         ))}
       </div>
-    </AnimatedSection>
+    </section>
   );
 }

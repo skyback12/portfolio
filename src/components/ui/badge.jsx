@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export function Badge({ variant = "default", className = "", ...props }) {
+export default function Badge({ variant = "default", className = "", ...props }) {
   const variants = {
     default: "bg-brand-100 text-brand-800 dark:bg-brand-800 dark:text-brand-100",
     secondary: "bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-100",
