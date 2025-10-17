@@ -1,0 +1,23 @@
+{
+  "redirects": [
+    {
+      "source": "/project", 
+      
+      "destination": "/projects:query",
+      
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "(?<query>.*)"
+        }
+      ],
+      "permanent": true
+    },
+    {
+      "source": "/project",
+      "destination": "/projects",
+      "permanent": true
+    }
+  ]
+}
