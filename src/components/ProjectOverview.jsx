@@ -1,6 +1,6 @@
 import React from "react";
-// UPDATED: Import PROJECTS from the component where it's defined
-import { PROJECTS } from "./Projects";
+// Import PROJECTS array
+import { PROJECTS } from "./Projects"; 
 import { ExternalLink, Video } from "lucide-react";
 import Card from "./ui/card";
 import Button from "./ui/button";
@@ -9,31 +9,25 @@ import Badge from "./ui/badge";
 /**
  * Utility function to convert a standard Google Drive file URL to an embed URL.
  * Assumes the URL is publicly shared.
- * Example: https://drive.google.com/file/d/{FILE_ID}/view?usp=sharing
- * Converts to: https://drive.google.com/file/d/{FILE_ID}/preview
  */
 const getEmbedUrl = (url) => {
   if (!url || !url.includes("drive.google.com")) return null;
 
   try {
-    // Support both the /file/d/{id}/... and the share link formats
     const urlObj = new URL(url);
     const pathSegments = urlObj.pathname.split('/').filter(Boolean);
 
-    // If path contains 'd' followed by id
     const dIndex = pathSegments.findIndex(segment => segment === 'd');
     if (dIndex !== -1 && pathSegments[dIndex + 1]) {
       const fileId = pathSegments[dIndex + 1];
       return `https://drive.google.com/file/d/${fileId}/preview`;
     }
 
-    // If url has id as query param (rare), try to extract "id" param
     const idFromQuery = urlObj.searchParams.get("id");
     if (idFromQuery) {
       return `https://drive.google.com/file/d/${idFromQuery}/preview`;
     }
 
-    // fallback: try regex to match /d/{id}/
     const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
     if (match && match[1]) return `https://drive.google.com/file/d/${match[1]}/preview`;
 
@@ -45,10 +39,10 @@ const getEmbedUrl = (url) => {
 
 /**
  * ProjectOverview reads ?slug=... from URL and displays a detailed page.
- * Usage: navigate to /project?slug=ai-dress-studio
+ * Usage: navigate to /projects?slug=gesture-presentation (after redirect)
  */
 export default function ProjectOverview() {
-  // read slug from query param
+  // read slug from query param - THIS CODE IS CORRECT for your setup
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("slug");
 
@@ -70,7 +64,6 @@ export default function ProjectOverview() {
 
   const embedUrl = getEmbedUrl(project.videoLink);
 
-  // fallbacks for short/long descriptions
   const shortDesc = project.short || project.desc || "";
   const longDesc = project.longDesc || project.desc || "";
 
