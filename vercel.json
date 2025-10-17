@@ -1,0 +1,21 @@
+{
+  "redirects": [
+    {
+      "source": "/project",
+      "destination": "/projects",
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "(?<slug>.*)"
+        }
+      ],
+      "permanent": true
+    },
+    {
+      "source": "/project?slug=gesture-presentation",
+      "destination": "/projects/gesture-presentation", 
+      "permanent": true
+    }
+  ]
+}
