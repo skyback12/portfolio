@@ -1,15 +1,11 @@
 {
   "redirects": [
     {
-      "source": "/project",
-      "destination": "/projects/:slug",
-      "has": [
-        {
-          "type": "query",
-          "key": "slug",
-          "value": "(?<slug>.*)"
-        }
-      ],
+     
+      "source": "/project(.*)",
+      
+      "destination": "/projects$1",
+      
       "permanent": true
     }
   ]
