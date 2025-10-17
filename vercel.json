@@ -11,11 +11,6 @@
         }
       ],
       "permanent": true
-    },
-    {
-      "source": "/project?slug=gesture-presentation",
-      "destination": "/projects/gesture-presentation", 
-      "permanent": true
     }
   ]
 }
