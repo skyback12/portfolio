@@ -35,6 +35,13 @@ The portfolio demonstrates proficiency in the following areas:
 
 ***
 
+## 🌐 Live Deployment
+The portfolio is currently hosted and live on Vercel:
+
+[**about-me-pf.vercel.app**](https://about-me-pf.vercel.app/)
+
+***
+
 ## ⚙️ Installation and Setup
 
 To run this project locally, follow these steps:
