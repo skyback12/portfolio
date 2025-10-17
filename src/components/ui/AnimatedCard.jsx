@@ -1,15 +1,15 @@
-// src/components/ui/AnimatedCard.jsx
+// src/components/ui/Card.jsx
 import React from "react";
-import { motion } from "framer-motion";
 
-export default function AnimatedCard({ children, className = "" }) {
+export default function Card({ children, className = "" }) {
+  // This combines the base card structure with the new animation CSS classes
   return (
-    <motion.div
-      className={`bg-white rounded-lg shadow-sm p-4 hover:shadow-lg transition-shadow ${className}`}
-      whileHover={{ y: -6 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    <div 
+      className={`bg-white rounded-xl shadow-lg border border-slate-100 p-5 
+                  transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 
+                  ${className}`}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

@@ -60,16 +60,17 @@ const GROUPS = [
 export default function Skills() {
   return (
     <AnimatedSection id="skills" className="mt-16">
-      <h3 className="text-xl font-semibold">Skills</h3>
-      <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <h3 className="text-3xl font-bold text-slate-800 mb-6">Technical Skills</h3>
+      <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"> {/* Increased gap for visual separation */}
         {GROUPS.map((g) => (
           <Card key={g.title}>
-            <h4 className="text-sm font-medium text-slate-600">{g.title}</h4>
+            <h4 className="text-lg font-semibold text-sky-700 border-b pb-2 mb-3">{g.title}</h4>
             <div className="mt-3 flex flex-wrap gap-2">
               {g.skills.map((s) => (
+                // Brighter badge for visual pop
                 <span
                   key={s}
-                  className="text-xs px-2 py-1 bg-slate-100 rounded"
+                  className="text-xs px-3 py-1 bg-sky-50 text-sky-800 font-medium rounded-full transition-colors hover:bg-sky-100"
                 >
                   {s}
                 </span>
