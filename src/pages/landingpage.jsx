@@ -6,13 +6,11 @@ import Projects from "../components/Projects";
 import Experience from "../components/Experience";
 import Freelance from "../components/Freelance";
 import Contact from "../components/Contact";
-import Navbar from "../components/Navbar";
 import "../styles/globals.css"
 
 export default function LandingPage() {
   return (
     <div className="bg-gradient-to-br from-slate-50 via-white to-blue-50 min-h-screen">
-      <Navbar />
       <main className="container mx-auto px-6 py-12">
         <Hero />
         <About />
