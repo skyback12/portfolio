@@ -5,13 +5,16 @@ import AnimatedCard from "./ui/AnimatedCard.jsx";
 
 export default function About() {
   return (
-    <AnimatedSection id="about" className="mt-16">
+    <AnimatedSection id="about" className="mt-24">
+      <div className="text-center mb-12">
+        <h3 className="text-4xl font-bold bg-gradient-to-r from-slate-800 to-blue-900 bg-clip-text text-transparent mb-3">About Me</h3>
+        <p className="text-slate-600">Building the future with AI and full stack development</p>
+      </div>
       <div className="grid md:grid-cols-3 gap-6 items-start">
         {/* Left section - About summary */}
         <div className="md:col-span-2">
-          <AnimatedCard>
-            <h3 className="text-xl font-semibold">About Me</h3>
-            <p className="mt-3 text-slate-700 leading-relaxed">
+          <AnimatedCard className="hover:shadow-2xl transition-shadow duration-500">
+            <p className="text-slate-700 leading-relaxed text-lg">
               I am a <span className="font-medium">B.Tech Artificial Intelligence & Machine Learning graduate (GGSIPU, 2025)</span>, 
               currently interning as a <span className="font-medium">Full Stack Python Developer & AI/ML Intern</span>. 
               I specialize in building <span className="font-medium">AI-powered, end-to-end applications</span> that bridge 
@@ -35,34 +38,34 @@ export default function About() {
 
         {/* Right section - Contact */}
         <div>
-          <AnimatedCard>
-            <h4 className="text-sm font-medium text-slate-600">Contact</h4>
+          <AnimatedCard className="hover:shadow-2xl transition-shadow duration-500 bg-gradient-to-br from-blue-50 to-slate-50">
+            <h4 className="text-lg font-bold text-slate-800 mb-4">Contact</h4>
             <p className="mt-2 text-sm">📧 adityamalik081203@gmail.com</p>
             <p className="mt-1 text-sm">📱 +91 8527036487</p>
-            <div className="mt-4 space-y-2">
+            <div className="mt-4 space-y-3">
               <a
                 href="https://www.linkedin.com/in/aditya-malik-946a61253"
                 target="_blank"
                 rel="noreferrer"
-                className="block text-sm text-sky-600 hover:underline"
+                className="block text-sm text-blue-600 hover:text-blue-800 transition-all duration-300 hover:translate-x-2 font-medium"
               >
-                LinkedIn Profile
+                → LinkedIn Profile
               </a>
               <a
                 href="https://github.com/skyback12"
                 target="_blank"
                 rel="noreferrer"
-                className="block text-sm text-sky-600 hover:underline"
+                className="block text-sm text-blue-600 hover:text-blue-800 transition-all duration-300 hover:translate-x-2 font-medium"
               >
-                GitHub Portfolio
+                → GitHub Portfolio
               </a>
               <a
                 href="https://www.fiverr.com/s/lj29pDa"
                 target="_blank"
                 rel="noreferrer"
-                className="block text-sm text-sky-600 hover:underline"
+                className="block text-sm text-blue-600 hover:text-blue-800 transition-all duration-300 hover:translate-x-2 font-medium"
               >
-                Fiverr Profile
+                → Fiverr Profile
               </a>
             </div>
           </AnimatedCard>

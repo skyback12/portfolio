@@ -91,63 +91,62 @@ export default function Hero() {
   }, []);
   
   return (
-    <div className="text-center py-16 bg-gradient-to-b from-white to-slate-50">
-      <div className="max-w-4xl mx-auto">
+    <div className="text-center py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-slate-100/30 pointer-events-none" />
+      <div className="absolute top-10 right-10 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-96 h-96 bg-slate-400/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="max-w-4xl mx-auto relative z-10">
         {/* Name */}
-        <h1 
+        <h1
           ref={nameRef}
-          className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900"
-          style={{ opacity: 0 }} // Start invisible
+          className="text-5xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent"
+          style={{ opacity: 0 }}
         >
           Hi, I'm Aditya Malik
         </h1>
 
         {/* Dynamic Tagline */}
-        <div 
+        <div
           ref={taglineRef}
-          className="mt-4 text-2xl md:text-3xl font-bold text-slate-800 h-10 md:h-12"
-          style={{ opacity: 0 }} // Start invisible
+          className="mt-6 text-2xl md:text-3xl font-bold text-slate-800 h-10 md:h-12"
+          style={{ opacity: 0 }}
         >
           I build solutions as a&nbsp;
           <Typewriter roles={dynamicRoles} />
         </div>
         
-        <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-          B.Tech AI & ML Graduate (GGSIPU, 2025) with a passion for bridging **machine learning** with **modern full stack development** to create production-ready applications.
+        <p className="mt-6 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          B.Tech AI & ML Graduate (GGSIPU, 2025) with a passion for bridging <span className="font-semibold text-blue-700">machine learning</span> with <span className="font-semibold text-blue-700">modern full stack development</span> to create production-ready applications.
         </p>
 
         {/* Buttons */}
-        <div 
+        <div
           ref={buttonsRef}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
-          style={{ opacity: 0 }} // Start invisible
+          className="mt-12 flex flex-wrap items-center justify-center gap-4"
+          style={{ opacity: 0 }}
         >
-          <Button href="/CV.pdf" variant="solid" className="shadow-lg hover:shadow-xl">
+          <Button href="/CV.pdf" variant="solid" className="shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800">
             <File className="w-4 h-4 mr-2" /> Download Resume
           </Button>
           <Button
             href="#projects"
             variant="ghost"
-            className="border-slate-400 hover:bg-slate-200"
+            className="border-2 border-slate-300 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 hover:scale-105"
           >
             Explore Projects
           </Button>
-          <Button href="https://github.com/skyback12" variant="ghost">
+          <Button href="https://github.com/skyback12" variant="ghost" className="hover:scale-105 transition-all duration-300">
             <Github className="w-4 h-4 mr-2" /> GitHub
           </Button>
         </div>
 
         {/* Badges - Simplified and made more subtle */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm text-slate-500">
-          <span>#Python</span>
-          <span>•</span>
-          <span>#React</span>
-          <span>•</span>
-          <span>#TensorFlow</span>
-          <span>•</span>
-          <span>#Flask</span>
-          <span>•</span>
-          <span>#OpenAI</span>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm">
+          {['Python', 'React', 'TensorFlow', 'Flask', 'OpenAI'].map((tech, i) => (
+            <span key={tech} className="px-4 py-2 bg-white border border-slate-200 rounded-full text-slate-600 font-medium shadow-sm hover:shadow-md hover:border-blue-300 transition-all duration-300 hover:-translate-y-1">
+              {tech}
+            </span>
+          ))}
         </div>
       </div>
     </div>

@@ -32,15 +32,24 @@ const EXPERIENCE = [
 
 export default function Experience() {
   return (
-    <AnimatedSection id="experience" className="mt-16">
-      <h3 className="text-xl font-semibold">Experience</h3>
-      <div className="mt-6 space-y-4">
-        {EXPERIENCE.map(e => (
-          <AnimatedCard key={e.title}>
-            <div>
-              <h4 className="font-semibold text-slate-900">{e.title}</h4>
-              <p className="text-sm text-slate-600">{e.org} • {e.date}</p>
-              <p className="mt-3 text-sm text-slate-700 whitespace-pre-line">{e.desc}</p>
+    <AnimatedSection id="experience" className="mt-24">
+      <div className="text-center mb-12">
+        <h3 className="text-4xl font-bold bg-gradient-to-r from-slate-800 to-blue-900 bg-clip-text text-transparent mb-3">Experience</h3>
+        <p className="text-slate-600">My professional journey in tech</p>
+      </div>
+      <div className="space-y-6">
+        {EXPERIENCE.map((e, idx) => (
+          <AnimatedCard key={e.title} className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 border-l-4 border-blue-500">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold shadow-lg">
+                {idx + 1}
+              </div>
+              <div className="flex-1">
+                <h4 className="font-bold text-lg text-slate-900">{e.title}</h4>
+                <p className="text-sm text-blue-600 font-medium mt-1">{e.org}</p>
+                <p className="text-xs text-slate-500 mt-1">{e.date}</p>
+                <p className="mt-4 text-sm text-slate-700 whitespace-pre-line leading-relaxed">{e.desc}</p>
+              </div>
             </div>
           </AnimatedCard>
         ))}

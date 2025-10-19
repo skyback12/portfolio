@@ -11,8 +11,8 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-40">
-      <div className="container mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
+    <header className="bg-white/90 backdrop-blur-lg shadow-md sticky top-0 z-50 border-b border-slate-200">
+      <div className="container mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2">
           <svg
@@ -30,20 +30,21 @@ export default function Navbar() {
               strokeLinejoin="round"
             />
           </svg>
-          <span className="font-semibold text-sm md:text-base text-slate-900">
+          <span className="font-bold text-base md:text-lg bg-gradient-to-r from-slate-900 to-blue-900 bg-clip-text text-transparent">
             Aditya Malik
           </span>
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-slate-700 hover:text-slate-900 transition-colors"
+              className="text-slate-600 hover:text-blue-600 transition-all duration-300 hover:scale-110 relative group"
             >
               {link.label}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
             </a>
           ))}
         </nav>
@@ -52,7 +53,7 @@ export default function Navbar() {
         <div className="md:hidden">
           <button
             onClick={() => setOpen((v) => !v)}
-            className="p-2 rounded-md border border-slate-200 bg-white"
+            className="p-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition-colors"
             aria-label="Toggle menu"
           >
             {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -62,14 +63,14 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t bg-white/95 backdrop-blur-sm">
-          <div className="container mx-auto px-4 py-3 space-y-2">
+        <div className="md:hidden border-t bg-white/95 backdrop-blur-sm animate-in fade-in slide-in-from-top duration-300">
+          <div className="container mx-auto px-4 py-4 space-y-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block text-slate-700 py-2 hover:text-slate-900"
+                className="block text-slate-700 py-3 px-4 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors font-medium"
               >
                 {link.label}
               </a>
