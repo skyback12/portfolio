@@ -1,13 +1,14 @@
-// src/components/Projects.jsx
-import React, { useState, useRef, useEffect } from "react";
+// src/components/Projects.tsx
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import Button from "./ui/button";
 import Badge from "./ui/badge";
-import { ExternalLink, Briefcase, User, Video } from "lucide-react"; // ADDED Video icon
+import { ExternalLink, Briefcase, User, Video } from "lucide-react";
 import Card from "./ui/card";
-import anime from 'animejs/lib/anime.es.js'; // ADDED animejs import
+import { Project } from "../types";
 
-// EXPORTING PROJECTS ARRAY for use in ProjectOverview.jsx
-export const PROJECTS = [
+// EXPORTING PROJECTS ARRAY for use in ProjectOverview.tsx
+export const PROJECTS: Project[] = [
   {
     title: "AI Dress Studio (Instyle Retail Inc.)",
     type: "company", // COMPANY PROJECT
@@ -100,85 +101,30 @@ export const PROJECTS = [
 ];
 
 
-// NEW: Wrapper component to apply Anime.js scroll and 3D hover effects
-const ProjectCard = ({ p, index, tabActive }) => { // Removed React.forwardRef as it's no longer necessary here
-  const cardRef = useRef(null);
+// NEW: Wrapper component to apply Framer Motion scroll and 3D hover effects
+interface ProjectCardProps {
+  p: Project;
+  index: number;
+  tabActive: string;
+}
 
-  // --- 3D Hover Effect Logic ---
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    // Normalize coordinates (-0.5 to 0.5)
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((centerY - y) / centerY) * 5; // Reduced max tilt for better visuals
-    const rotateY = ((x - centerX) / centerX) * 5;
-    
-    anime({
-      targets: cardRef.current,
-      rotateX: rotateX,
-      rotateY: rotateY,
-      duration: 50, // Fast response
-      easing: 'easeOutSine',
-      perspective: '1000px',
-    });
-  };
-
-  const handleMouseLeave = () => {
-    if (!cardRef.current) return;
-    anime({
-      targets: cardRef.current,
-      rotateX: 0,
-      rotateY: 0,
-      duration: 500, // Smooth return
-      easing: 'easeOutElastic(1, .8)',
-    });
-  };
-  // --- End 3D Hover Effect Logic ---
-
-
-  // --- Scroll Animation Logic ---
-  useEffect(() => {
-    const currentCard = cardRef.current;
-    if (!currentCard) return;
-
-    // Use IntersectionObserver only on mount and for scroll-in animation
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            anime({
-              targets: entry.target,
-              opacity: [0, 1],
-              translateY: [30, 0],
-              duration: 800,
-              delay: 50 + (index * 100), // Stagger the animation
-              easing: 'easeOutQuart',
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: '0px', threshold: 0.1 }
-    );
-
-    currentCard.style.opacity = 0; // Ensure it starts hidden
-    observer.observe(currentCard);
-
-    // This cleanup function will run on unmount or when dependencies change (like tabActive)
-    return () => { observer.unobserve(currentCard); };
-  }, [index, tabActive]); 
-  // --- End Scroll Animation Logic ---
-
-
+const ProjectCard: React.FC<ProjectCardProps> = ({ p, index, tabActive }) => {
   return (
-    <div
-      ref={cardRef} 
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ 
+        duration: 0.8, 
+        delay: 0.05 + (index * 0.1), 
+        ease: "easeOut" 
+      }}
+      whileHover={{ 
+        rotateX: 5, 
+        rotateY: 5,
+        transition: { duration: 0.1 }
+      }}
+      whileTap={{ scale: 0.98 }}
+      viewport={{ once: true, margin: "0px" }}
       className="transform-gpu transition-shadow duration-500 ease-out"
       style={{ perspective: '1000px', transformStyle: 'preserve-3d' }}
     >
@@ -263,39 +209,18 @@ const ProjectCard = ({ p, index, tabActive }) => { // Removed React.forwardRef a
           </div>
         </div>
       </Card>
-    </div>
+    </motion.div>
   );
 };
 
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState("personal"); // Initialize tab state to "personal"
-  const listRef = useRef(null);
 
   const filteredProjects = PROJECTS.filter(p => p.type === activeTab);
 
-  // --- Shuffle Animation Logic (on tab change) ---
-  useEffect(() => {
-    if (!listRef.current) return;
 
-    // Apply a quick, random shuffle/bounce effect to the list container
-    anime({
-      targets: listRef.current,
-      translateX: [
-        { value: anime.random(-10, 10), duration: 200, easing: 'easeOutSine' },
-        { value: 0, duration: 400, easing: 'easeOutQuad' }
-      ],
-      rotate: [
-        { value: anime.random(-1, 1), duration: 200, easing: 'easeOutSine' },
-        { value: 0, duration: 400, easing: 'easeOutQuad' }
-      ],
-      // This ensures the whole list container animates slightly on filter change
-    });
-  }, [activeTab]);
-  // --- End Shuffle Animation Logic ---
-
-
-  const TabButton = ({ type, label }) => {
+  const TabButton: React.FC<{ type: string; label: string }> = ({ type, label }) => {
     const isActive = activeTab === type;
     const baseClasses = "px-4 py-2 text-sm font-medium transition-colors border-b-2 cursor-pointer";
     const activeClasses = "border-sky-600 text-sky-600";
@@ -324,9 +249,12 @@ export default function Projects() {
         <TabButton type="company" label="Company Projects" />
       </div>
 
-      {/* Project List now uses filteredProjects and is wrapped with ref for shuffle */}
-      <div 
-        ref={listRef} 
+      {/* Project List now uses filteredProjects with Framer Motion */}
+      <motion.div 
+        key={activeTab}
+        initial={{ opacity: 0, x: -10 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
         className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6"
       >
         {filteredProjects.map((p, index) => (
@@ -340,7 +268,7 @@ export default function Projects() {
             No {activeTab} projects to display yet.
           </p>
         )}
-      </div>
+      </motion.div>
     </section>
   );
 }

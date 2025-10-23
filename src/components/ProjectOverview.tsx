@@ -1,10 +1,11 @@
 import React from "react";
 // UPDATED: Import PROJECTS from the component where it's defined
 import { PROJECTS } from "./Projects";
-import { ExternalLink, Video } from "lucide-react";
+import { ExternalLink, Video, Home, ChevronRight } from "lucide-react";
 import Card from "./ui/card";
 import Button from "./ui/button";
 import Badge from "./ui/badge";
+import { Project } from "../types";
 
 /**
  * Utility function to convert a standard Google Drive file URL to an embed URL.
@@ -12,7 +13,7 @@ import Badge from "./ui/badge";
  * Example: https://drive.google.com/file/d/{FILE_ID}/view?usp=sharing
  * Converts to: https://drive.google.com/file/d/{FILE_ID}/preview
  */
-const getEmbedUrl = (url) => {
+const getEmbedUrl = (url: string | undefined): string | null => {
   if (!url || !url.includes("drive.google.com")) return null;
 
   try {
@@ -44,15 +45,32 @@ const getEmbedUrl = (url) => {
 };
 
 /**
+ * Video hosting recommendations component
+ */
+const VideoHostingRecommendation: React.FC = () => (
+  <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+    <h5 className="font-semibold text-blue-900 mb-2">💡 Video Hosting Recommendation</h5>
+    <p className="text-sm text-blue-800 mb-2">
+      For better performance and reliability, consider migrating videos to:
+    </p>
+    <ul className="text-sm text-blue-700 list-disc list-inside space-y-1">
+      <li><strong>YouTube:</strong> Free, reliable, and SEO-friendly with automatic captions</li>
+      <li><strong>Vimeo:</strong> Professional hosting with better privacy controls</li>
+      <li><strong>Cloudflare Stream:</strong> Optimized for web performance</li>
+    </ul>
+  </div>
+);
+
+/**
  * ProjectOverview reads ?slug=... from URL and displays a detailed page.
  * Usage: navigate to /project?slug=ai-dress-studio
  */
-export default function ProjectOverview() {
+export default function ProjectOverview(): React.JSX.Element {
   // read slug from query param
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("slug");
 
-  const project = PROJECTS.find((p) => p.slug === slug);
+  const project: Project | undefined = PROJECTS.find((p) => p.slug === slug);
 
   if (!project) {
     return (
@@ -76,6 +94,39 @@ export default function ProjectOverview() {
 
   return (
     <main className="container mx-auto px-6 py-12">
+      {/* Breadcrumb Navigation */}
+      <nav className="mb-8" aria-label="Breadcrumb">
+        <ol className="flex items-center space-x-2 text-sm text-slate-600">
+          <li>
+            <a 
+              href="/" 
+              className="flex items-center hover:text-blue-600 transition-colors"
+              aria-label="Go to home page"
+            >
+              <Home className="w-4 h-4 mr-1" />
+              Home
+            </a>
+          </li>
+          <li>
+            <ChevronRight className="w-4 h-4 text-slate-400" />
+          </li>
+          <li>
+            <a 
+              href="/#projects" 
+              className="hover:text-blue-600 transition-colors"
+            >
+              Projects
+            </a>
+          </li>
+          <li>
+            <ChevronRight className="w-4 h-4 text-slate-400" />
+          </li>
+          <li className="text-slate-900 font-medium" aria-current="page">
+            {project.title}
+          </li>
+        </ol>
+      </nav>
+
       <div className="grid md:grid-cols-3 gap-6">
         <div className="md:col-span-2">
           <h1 className="text-2xl font-bold">{project.title}</h1>
@@ -94,8 +145,10 @@ export default function ProjectOverview() {
                   src={embedUrl}
                   allowFullScreen
                   title={`Video Demo of ${project.title}`}
+                  loading="lazy"
                 />
               </div>
+              <VideoHostingRecommendation />
             </div>
           )}
 

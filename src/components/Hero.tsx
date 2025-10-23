@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Button from "../components/ui/button";
 import Badge from "../components/ui/badge";
 import { Github, Linkedin, File } from "lucide-react";
-import anime from 'animejs/lib/anime.es.js'; // Import animejs
+import { TypewriterProps } from "../types";
 
-// Helper component for the typing effect (No change needed here)
-const Typewriter = ({ roles, speed = 100, delay = 1000 }) => {
+// Helper component for the typing effect
+const Typewriter: React.FC<TypewriterProps> = ({ roles, speed = 100, delay = 1000 }) => {
   const [text, setText] = useState('');
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -53,42 +54,6 @@ export default function Hero() {
     "Full Stack Python Developer",
     "Freelancer"
   ];
-
-  // Refs for animation targets
-  const nameRef = useRef(null);
-  const taglineRef = useRef(null);
-  const buttonsRef = useRef(null);
-
-  useEffect(() => {
-    // 1. Name Fade In
-    anime({
-      targets: nameRef.current,
-      opacity: [0, 1],
-      translateY: [-20, 0],
-      duration: 800,
-      easing: 'easeOutQuad'
-    });
-
-    // 2. Tagline Fade In (delayed)
-    anime({
-      targets: taglineRef.current,
-      opacity: [0, 1],
-      translateY: [-10, 0],
-      duration: 800,
-      delay: 300,
-      easing: 'easeOutQuad'
-    });
-    
-    // 3. Buttons Fade In (further delayed)
-    anime({
-      targets: buttonsRef.current,
-      opacity: [0, 1],
-      translateY: [20, 0],
-      duration: 800,
-      delay: 600,
-      easing: 'easeOutQuad'
-    });
-  }, []);
   
   return (
     <div className="text-center py-24 relative overflow-hidden">
@@ -97,33 +62,36 @@ export default function Hero() {
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-slate-400/10 rounded-full blur-3xl pointer-events-none" />
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Name */}
-        <h1
-          ref={nameRef}
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-5xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent"
-          style={{ opacity: 0 }}
         >
           Hi, I'm Aditya Malik
-        </h1>
+        </motion.h1>
 
         {/* Dynamic Tagline */}
-        <div
-          ref={taglineRef}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           className="mt-6 text-2xl md:text-3xl font-bold text-slate-800 h-10 md:h-12"
-          style={{ opacity: 0 }}
         >
           I build solutions as a&nbsp;
           <Typewriter roles={dynamicRoles} />
-        </div>
+        </motion.div>
         
         <p className="mt-6 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
           B.Tech AI & ML Graduate (GGSIPU, 2025) with a passion for bridging <span className="font-semibold text-blue-700">machine learning</span> with <span className="font-semibold text-blue-700">modern full stack development</span> to create production-ready applications.
         </p>
 
         {/* Buttons */}
-        <div
-          ref={buttonsRef}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
           className="mt-12 flex flex-wrap items-center justify-center gap-4"
-          style={{ opacity: 0 }}
         >
           <Button href="/CV.pdf" variant="solid" className="shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800">
             <File className="w-4 h-4 mr-2" /> Download Resume
@@ -138,7 +106,7 @@ export default function Hero() {
           <Button href="https://github.com/skyback12" variant="ghost" className="hover:scale-105 transition-all duration-300">
             <Github className="w-4 h-4 mr-2" /> GitHub
           </Button>
-        </div>
+        </motion.div>
 
         {/* Badges - Simplified and made more subtle */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm">

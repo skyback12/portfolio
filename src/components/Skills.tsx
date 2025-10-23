@@ -1,11 +1,14 @@
-// src/components/Skills.jsx
+// src/components/Skills.tsx
 import React from "react";
-import Card from "./ui/card.jsx";
-import AnimatedSection from "./ui/AnimatedSection.jsx";
+import { Brain, Code, Wrench } from "lucide-react";
+import Card from "./ui/card";
+import AnimatedSection from "./ui/AnimatedSection";
+import { SkillGroup } from "../types";
 
-const GROUPS = [
+const GROUPS: SkillGroup[] = [
   {
     title: "AI / ML",
+    icon: Brain,
     skills: [
       "Python",
       "TensorFlow",
@@ -23,6 +26,7 @@ const GROUPS = [
   },
   {
     title: "Full Stack Development",
+    icon: Code,
     skills: [
       "Flask",
       "FastAPI",
@@ -42,6 +46,7 @@ const GROUPS = [
   },
   {
     title: "Tools & Platforms",
+    icon: Wrench,
     skills: [
       "Git & GitHub",
       "MongoDB",
@@ -65,19 +70,21 @@ export default function Skills() {
         <p className="text-slate-600">Technologies I work with to build intelligent solutions</p>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {GROUPS.map((g, idx) => (
-          <div key={g.title} className="group">
-            <Card className="h-full hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 hover:border-blue-200">
-              <div className="flex items-center gap-3 mb-4">
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${
-                  idx === 0 ? 'from-blue-500 to-cyan-500' :
-                  idx === 1 ? 'from-emerald-500 to-teal-500' :
-                  'from-violet-500 to-purple-500'
-                } flex items-center justify-center text-white font-bold text-xl shadow-lg`}>
-                  {idx + 1}
+        {GROUPS.map((g, idx) => {
+          const IconComponent = g.icon;
+          return (
+            <div key={g.title} className="group">
+              <Card className="h-full hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 hover:border-blue-200">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${
+                    idx === 0 ? 'from-blue-500 to-cyan-500' :
+                    idx === 1 ? 'from-emerald-500 to-teal-500' :
+                    'from-violet-500 to-purple-500'
+                  } flex items-center justify-center text-white shadow-lg`}>
+                    <IconComponent className="w-6 h-6" />
+                  </div>
+                  <h4 className="text-xl font-bold text-slate-800">{g.title}</h4>
                 </div>
-                <h4 className="text-xl font-bold text-slate-800">{g.title}</h4>
-              </div>
               <div className="flex flex-wrap gap-2">
                 {g.skills.map((s) => (
                   <span
@@ -90,7 +97,8 @@ export default function Skills() {
               </div>
             </Card>
           </div>
-        ))}
+          );
+        })}
       </div>
     </AnimatedSection>
   );
